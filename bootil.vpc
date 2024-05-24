@@ -1,0 +1,311 @@
+//-----------------------------------------------------------------------------
+//	Bootil.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$macro SRCDIR		".."
+ 
+$include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories	"include;src\3rdParty;src\3rdParty\fastlz;src\3rdParty\happyhttp;src\3rdParty\jpegcompressor;src\3rdParty\lzma;src\3rdParty\rapidjson;src\3rdParty\smhasher;src\3rdParty\stb_image;src\3rdParty\stlencoders;src\3rdParty\tinythreadpp;src\3rdParty\xzip;src\3rdParty\zlib"
+		$PreprocessorDefinitions		"BOOTIL_COMPILE_STATIC"
+	}
+}
+
+$Project "bootil"
+{
+	$Folder	"Source Files"
+	{
+		$File	"src\Bootil\Base.cpp"
+
+		$Folder	"Console"
+		{
+			$File	"src\Bootil\Console\Console.cpp"
+			$File	"src\Bootil\Console\ConsoleInput.cpp"
+		}
+
+		$Folder	"Data"
+		{
+			$File	"src\Bootil\Data\Json.cpp"
+			$File	"src\Bootil\Data\Tree.cpp"
+		}
+
+		$Folder	"Debug"
+		{
+			$File	"src\Bootil\Debug\Debug.cpp"
+		}
+
+		$Folder	"File"
+		{
+			$File	"src\Bootil\File\Changes.cpp"
+			$File	"src\Bootil\File\File.cpp"
+			$File	"src\Bootil\File\System.cpp"
+		}
+
+		$Folder	"Image"
+		{
+			$File	"src\Bootil\Image\Image.cpp"
+			$File	"src\Bootil\Image\JPEG.cpp"
+		}
+
+		$Folder	"Network"
+		{
+			$File	"src\Bootil\Network\HTTP.cpp"
+			$File	"src\Bootil\Network\Network.cpp"
+			$File	"src\Bootil\Network\Socket.cpp"
+		}
+
+		$Folder	"Platform"
+		{
+			$File	"src\Bootil\Platform\Platform_LINUX.cpp"
+			$File	"src\Bootil\Platform\Platform_NULL.cpp"
+			$File	"src\Bootil\Platform\Platform_OSX.cpp"
+			$File	"src\Bootil\Platform\Platform_WINDOWS.cpp"
+		}
+
+		$Folder	"Threads"
+		{
+			$File	"src\Bootil\Threads\Mutex.cpp"
+			$File	"src\Bootil\Threads\Thread.cpp"
+			$File	"src\Bootil\Threads\Utility.cpp"
+		}
+
+		$Folder	"Types"
+		{
+			$File	"src\Bootil\Types\Buffer.cpp"
+			$File	"src\Bootil\Types\Math.cpp"
+			$File	"src\Bootil\Types\String.cpp"
+			$File	"src\Bootil\Types\String_Convert.cpp"
+			$File	"src\Bootil\Types\String_Encode.cpp"
+			$File	"src\Bootil\Types\String_File.cpp"
+			$File	"src\Bootil\Types\String_Format.cpp"
+			$File	"src\Bootil\Types\String_Sanitize.cpp"
+			$File	"src\Bootil\Types\String_Test.cpp"
+			$File	"src\Bootil\Types\String_To.cpp"
+			$File	"src\Bootil\Types\String_URL.cpp"
+			$File	"src\Bootil\Types\String_Util.cpp"
+		}
+
+		$Folder	"Utility"
+		{
+			$File	"src\Bootil\Utility\CommandLine.cpp"
+			$File	"src\Bootil\Utility\Compression.cpp"
+			$File	"src\Bootil\Utility\CompressionLZMA.cpp"
+			$File	"src\Bootil\Utility\Hasher.cpp"
+			$File	"src\Bootil\Utility\PackFile.cpp"
+			$File	"src\Bootil\Utility\Processes.cpp"
+			$File	"src\Bootil\Utility\Time.cpp"
+		}
+	}
+
+	$Folder "3rdParty"
+	{
+		$File	"src\3rdParty\globber.cpp"
+
+		$Folder "fastlz"
+		{
+			$File	"src\3rdParty\fastlz\fastlz.c"
+			$File	"src\3rdParty\fastlz\fastlz.h"
+		}
+
+		$Folder "happyhttp"
+		{
+			$File	"src\3rdParty\happyhttp\happyhttp.cpp"
+			$File	"src\3rdParty\happyhttp\happyhttp.h"
+		}
+
+		$Folder "jpegcompressor"
+		{
+			$File	"src\3rdParty\jpegcompressor\jpge.cpp"
+			$File	"src\3rdParty\jpegcompressor\jpge.h"
+		}
+
+		$Folder "lzma"
+		{
+			$File	"src\3rdParty\lzma\Alloc.c"
+			$File	"src\3rdParty\lzma\Alloc.h"
+			$File	"src\3rdParty\lzma\LzFind.c"
+			$File	"src\3rdParty\lzma\LzFind.h"
+			$File	"src\3rdParty\lzma\LzHash.h"
+			$File	"src\3rdParty\lzma\LzmaDec.c"
+			$File	"src\3rdParty\lzma\LzmaDec.h"
+			$File	"src\3rdParty\lzma\LzmaEnc.c"
+			$File	"src\3rdParty\lzma\LzmaEnc.h"
+			$File	"src\3rdParty\lzma\LzmaLib.c"
+			$File	"src\3rdParty\lzma\LzmaLib.h"
+			$File	"src\3rdParty\lzma\Types.h"
+		}
+
+		$Folder "rapidjson"
+		{
+			$File	"src\3rdParty\rapidjson\internal\pow10.h"
+			$File	"src\3rdParty\rapidjson\internal\stack.h"
+			$File	"src\3rdParty\rapidjson\internal\strfunc.h"
+			$File	"src\3rdParty\rapidjson\allocators.h"
+			$File	"src\3rdParty\rapidjson\document.h"
+			$File	"src\3rdParty\rapidjson\encodedstream.h"
+			$File	"src\3rdParty\rapidjson\encodings.h"
+			$File	"src\3rdParty\rapidjson\filereadstream.h"
+			$File	"src\3rdParty\rapidjson\filestream.h"
+			$File	"src\3rdParty\rapidjson\filewritestream.h"
+			$File	"src\3rdParty\rapidjson\prettywriter.h"
+			$File	"src\3rdParty\rapidjson\rapidjson.h"
+			$File	"src\3rdParty\rapidjson\reader.h"
+			$File	"src\3rdParty\rapidjson\stringbuffer.h"
+			$File	"src\3rdParty\rapidjson\writer.h"
+		}
+
+		$Folder "smhasher"
+		{
+			$File	"src\3rdParty\smhasher\Bitvec.h"
+			$File	"src\3rdParty\smhasher\crc.cpp"
+			$File	"src\3rdParty\smhasher\Platform.h"
+			$File	"src\3rdParty\smhasher\pstdint.h"
+			$File	"src\3rdParty\smhasher\smhash_md5.cpp"
+			$File	"src\3rdParty\smhasher\Types.h"
+		}
+
+		$Folder "stb_image"
+		{
+			$File	"src\3rdParty\stb_image\stb_image.h"
+		}
+
+		$Folder "stlencoders"
+		{
+			$File	"src\3rdParty\stlencoders\base2.hpp"
+			$File	"src\3rdParty\stlencoders\base16.hpp"
+			$File	"src\3rdParty\stlencoders\base32.hpp"
+			$File	"src\3rdParty\stlencoders\base64.hpp"
+			$File	"src\3rdParty\stlencoders\error.hpp"
+			$File	"src\3rdParty\stlencoders\iterator.hpp"
+			$File	"src\3rdParty\stlencoders\lookup.hpp"
+			$File	"src\3rdParty\stlencoders\traits.hpp"
+		}
+
+		$Folder "tinythreadpp"
+		{
+			$File	"src\3rdParty\tinythreadpp\fast_mutex.h"
+			$File	"src\3rdParty\tinythreadpp\tinythread.cpp"
+			$File	"src\3rdParty\tinythreadpp\tinythread.h"
+		}
+
+		$Folder "xzip"
+		{
+			$File	"src\3rdParty\xzip\unzip.cc"
+			$File	"src\3rdParty\xzip\unzip.h"
+			$File	"src\3rdParty\xzip\zip.cc"
+			$File	"src\3rdParty\xzip\zip.h"
+		}
+
+		$Folder "zlib"
+		{
+			$File	"src\3rdParty\zlib\adler32.c"
+			$File	"src\3rdParty\zlib\compress.c"
+			$File	"src\3rdParty\zlib\crc32.c"
+			$File	"src\3rdParty\zlib\crc32.h"
+			$File	"src\3rdParty\zlib\deflate.c"
+			$File	"src\3rdParty\zlib\deflate.h"
+			$File	"src\3rdParty\zlib\gzclose.c"
+			$File	"src\3rdParty\zlib\gzguts.h"
+			$File	"src\3rdParty\zlib\gzlib.c"
+			$File	"src\3rdParty\zlib\gzread.c"
+			$File	"src\3rdParty\zlib\gzwrite.c"
+			$File	"src\3rdParty\zlib\infback.c"
+			$File	"src\3rdParty\zlib\inffast.c"
+			$File	"src\3rdParty\zlib\inffast.h"
+			$File	"src\3rdParty\zlib\inffixed.h"
+			$File	"src\3rdParty\zlib\inflate.c"
+			$File	"src\3rdParty\zlib\inflate.h"
+			$File	"src\3rdParty\zlib\inftrees.c"
+			$File	"src\3rdParty\zlib\inftrees.h"
+			$File	"src\3rdParty\zlib\trees.c"
+			$File	"src\3rdParty\zlib\trees.h"
+			$File	"src\3rdParty\zlib\uncompr.c"
+			$File	"src\3rdParty\zlib\zconf.h"
+			$File	"src\3rdParty\zlib\zlib.h"
+			$File	"src\3rdParty\zlib\zutil.c"
+			$File	"src\3rdParty\zlib\zutil.h"
+		}
+	}
+
+	$Folder	"Header Files"
+	{
+		$File	"include/Bootil/Base.h"
+		$File	"include/Bootil/Bootil.h"
+
+		$Folder	"Console"
+		{
+			$File	"include/Bootil/Console/Console.h"
+			$File	"include/Bootil/Console/ConsoleInput.h"
+		}
+
+		$Folder	"Data"
+		{
+			$File	"include/Bootil/Data/Json.h"
+			$File	"include/Bootil/Data/Tree.h"
+		}
+
+		$Folder	"Debug"
+		{
+			$File	"include/Bootil/Debug/Debug.h"
+			$File	"include/Bootil/Debug/InstanceCounter.h"
+		}
+
+		$Folder	"File"
+		{
+			$File	"include/Bootil/File/Changes.h"
+			$File	"include/Bootil/File/File.h"
+			$File	"include/Bootil/File/System.h"
+		}
+
+		$Folder	"Image"
+		{
+			$File	"include/Bootil/Image/Image.h"
+			$File	"include/Bootil/Image/JPEG.h"
+			$File	"include/Bootil/Image/PNG.h"
+		}
+
+		$Folder	"Network"
+		{
+			$File	"include/Bootil/Network/HTTP.h"
+			$File	"include/Bootil/Network/Network.h"
+			$File	"include/Bootil/Network/Router.h"
+			$File	"include/Bootil/Network/Socket.h"
+		}
+
+		$Folder	"Platform"
+		{
+			$File	"include/Bootil/Platform/Platform.h"
+		}
+
+		$Folder	"Threads"
+		{
+			$File	"include/Bootil/Threads/Mutex.h"
+			$File	"include/Bootil/Threads/Thread.h"
+			$File	"include/Bootil/Threads/Utility.h"
+		}
+
+		$Folder	"Types"
+		{
+			$File	"include/Bootil/Types/Buffer.h"
+			$File	"include/Bootil/Types/Math.h"
+			$File	"include/Bootil/Types/String.h"
+		}
+
+		$Folder	"Utility"
+		{
+			$File	"include/Bootil/Utility/CommandLine.h"
+			$File	"include/Bootil/Utility/Compression.h"
+			$File	"include/Bootil/Utility/Hasher.h"
+			$File	"include/Bootil/Utility/PackFile.h"
+			$File	"include/Bootil/Utility/Processes.h"
+			$File	"include/Bootil/Utility/STLUtility.h"
+			$File	"include/Bootil/Utility/Time.h"
+		}
+	}
+}
