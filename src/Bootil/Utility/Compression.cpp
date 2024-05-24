@@ -5,12 +5,7 @@
 #include "xzip/zip.h"
 #include "xzip/unzip.h"
 
-
-extern "C"
-{
-	int fastlz_compress_level( int level, const void* input, int length, void* output );
-	int fastlz_decompress( const void* input, int length, void* output, int maxout );
-}
+#include "fastlz.h"
 
 namespace Bootil
 {

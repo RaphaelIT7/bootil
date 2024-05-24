@@ -91,7 +91,10 @@ int fastlz_decompress(const void* input, int length, void* output, int maxout);
   decompressed using the function fastlz_decompress above.
 */  
 
-int fastlz_compress_level(int level, const void* input, int length, void* output);
+extern "C"
+{
+	int fastlz_compress_level(int level, const void* input, int length, void* output);
+}
 
 #if defined (__cplusplus)
 }

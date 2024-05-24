@@ -88,6 +88,7 @@ namespace Bootil
 
 namespace Bootil
 {
+#ifndef BUILD_GMOD
 	template<typename T> void SafeDelete( T* & Ptr )
 	{
 		delete Ptr;
@@ -118,6 +119,6 @@ namespace Bootil
 		if ( val > max ) return max;
 		return val;
 	}
-	
+#endif
 
 }

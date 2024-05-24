@@ -80,9 +80,12 @@ typedef unsigned short flzuint16;
 typedef unsigned int   flzuint32;
 
 /* prototypes */
-int fastlz_compress(const void* input, int length, void* output);
-int fastlz_compress_level(int level, const void* input, int length, void* output);
-int fastlz_decompress(const void* input, int length, void* output, int maxout);
+extern "C"
+{
+	int fastlz_compress(const void* input, int length, void* output);
+	int fastlz_compress_level(int level, const void* input, int length, void* output);
+	int fastlz_decompress(const void* input, int length, void* output, int maxout);
+}
 
 #define MAX_COPY       32
 #define MAX_LEN       264  /* 256 + 8 */
@@ -149,14 +152,17 @@ int fastlz_decompress(const void* input, int length, void* output, int maxout)
   return 0;
 }
 
-int fastlz_compress_level(int level, const void* input, int length, void* output)
+extern "C"
 {
-  if(level == 1)
-    return fastlz1_compress(input, length, output);
-  if(level == 2)
-    return fastlz2_compress(input, length, output);
+	int fastlz_compress_level(int level, const void* input, int length, void* output)
+	{
+	  if(level == 1)
+		return fastlz1_compress(input, length, output);
+	  if(level == 2)
+		return fastlz2_compress(input, length, output);
 
-  return 0;
+	  return 0;
+	}
 }
 
 #else /* !defined(FASTLZ_COMPRESSOR) && !defined(FASTLZ_DECOMPRESSOR) */
