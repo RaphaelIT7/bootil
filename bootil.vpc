@@ -13,7 +13,7 @@ $Configuration
 	$Compiler
 	{
 		$AdditionalIncludeDirectories	"include;src\3rdParty;src\3rdParty\fastlz;src\3rdParty\happyhttp;src\3rdParty\jpegcompressor;src\3rdParty\lzma;src\3rdParty\rapidjson;src\3rdParty\smhasher;src\3rdParty\stb_image;src\3rdParty\stlencoders;src\3rdParty\tinythreadpp;src\3rdParty\xzip;src\3rdParty\zlib"
-		$PreprocessorDefinitions		"BOOTIL_COMPILE_STATIC"
+		$PreprocessorDefinitions		"BOOTIL_COMPILE_STATIC;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS"
 	}
 }
 

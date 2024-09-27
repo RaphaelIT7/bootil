@@ -12,10 +12,10 @@
 #endif
 #if defined(_MSC_VER) || defined(__BORLANDC__) || defined(__MINGW32__)
 #include <direct.h>
-#define lumkdir(t) (mkdir(t))
+#define lumkdir(t) (_mkdir(t))
 #else
 #include <unistd.h>
-#define lumkdir(t) (mkdir(t,0755))
+#define lumkdir(t) (_mkdir(t,0755))
 #endif
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -178,7 +178,7 @@ typedef struct tm_unz_s
 DWORD GetFilePosU(HANDLE hfout)
 {
 	struct stat st;
-	fstat(fileno(hfout),&st);
+	fstat(_fileno(hfout),&st);
 	if ((st.st_mode&S_IFREG)==0) return 0xFFFFFFFF;
 	return ftell(hfout);
 }
@@ -4104,7 +4104,7 @@ ZRESULT TUnzip::Open(void *z,unsigned int len,DWORD flags)
 	if (uf!=0 || currentfile!=-1) return ZR_NOTINITED;
 	//
 #ifdef ZIP_STD
-	getcwd(rootdir,MAX_PATH-1);
+	_getcwd(rootdir,MAX_PATH-1);
 #else
 #ifdef GetCurrentDirectory
 	GetCurrentDirectory(MAX_PATH-1,rootdir);

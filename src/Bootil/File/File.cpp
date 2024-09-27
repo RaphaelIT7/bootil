@@ -176,9 +176,9 @@ namespace Bootil
 			// Actually create the folder
 			//
 #ifdef _WIN32
-			return 0 == mkdir( strFixed.c_str() );
+			return 0 == _mkdir( strFixed.c_str() );
 #else
-			return 0 == mkdir( strFixed.c_str(), S_IRWXU | S_IRWXG | S_IRWXO );
+			return 0 == _mkdir( strFixed.c_str(), S_IRWXU | S_IRWXG | S_IRWXO );
 #endif
 		}
 
@@ -203,13 +203,13 @@ namespace Bootil
 				}
 			}
 
-			rmdir( strFolder.c_str() );
+			_rmdir( strFolder.c_str() );
 			return true;
 		}
 
 		BOOTIL_EXPORT bool RemoveFile( const BString & strFileName )
 		{
-			return 0 == unlink( strFileName.c_str() );
+			return 0 == _unlink( strFileName.c_str() );
 		}
 
 		BOOTIL_EXPORT bool Copy( const BString & strFrom, const BString & strTo )

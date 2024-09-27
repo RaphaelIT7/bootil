@@ -166,7 +166,7 @@ namespace Bootil
 
 		BOOTIL_EXPORT void ChangeDir( const BString & strName )
 		{
-			chdir( strName.c_str() );
+			_chdir( strName.c_str() );
 		}
 
 		BOOTIL_EXPORT void StartProcess( const BString & strProcess, bool AndWait )
@@ -179,7 +179,7 @@ namespace Bootil
 
 			if ( AndWait ) { iFlag = P_WAIT; }
 
-			spawnv( P_WAIT, strProcess.c_str(), args );
+			_spawnv( P_WAIT, strProcess.c_str(), args );
 		}
 
 		BOOTIL_EXPORT void Sleep( unsigned int ms )
@@ -254,7 +254,7 @@ namespace Bootil
 
         BOOTIL_EXPORT bool IsKeyPressed()
         {
-            return kbhit() != 0;
+            return _kbhit() != 0;
         }
 
         BOOTIL_EXPORT char GetKeyChar()

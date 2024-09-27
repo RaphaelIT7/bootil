@@ -682,7 +682,7 @@ void GetNow(lutime_t *ft, WORD *dosdate, WORD *dostime)
 DWORD GetFilePosZ(HANDLE hfout)
 {
 	struct stat st;
-	fstat(fileno(hfout),&st);
+	fstat(_fileno(hfout),&st);
 	if ((st.st_mode&S_IFREG)==0) return 0xFFFFFFFF;
 	return ftell(hfout);
 }
@@ -694,7 +694,7 @@ ZRESULT GetFileInfo(FILE *hf, ulg *attr, long *size, iztimes *times, ulg *timest
 	// unsigned integer comparison of absolute times. The attributes have two
 	// high bytes unix attr, and two low bytes a mapping of that to DOS attr.
 	struct stat bhi;
-	int res=fstat(fileno(hf),&bhi);
+	int res=fstat(_fileno(hf),&bhi);
 	if (res==-1) return ZR_NOFILE;
 	ulg fa=bhi.st_mode;
 	ulg a=0;
@@ -2907,7 +2907,7 @@ ZRESULT TZip::open_handle(HANDLE hf,unsigned int len)
 	bool canseek;
 #ifdef ZIP_STD
 	struct stat st;
-	fstat(fileno(hf),&st);
+	fstat(_fileno(hf),&st);
 	canseek = S_ISREG(st.st_mode);
 #else
 	DWORD res = SetFilePointer(hfout,0,0,FILE_CURRENT);
